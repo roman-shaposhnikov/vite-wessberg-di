@@ -1,0 +1,52 @@
+{
+  "name": "vite-wessberg-di",
+  "version": "0.1.1",
+  "license": "ISC",
+  "type": "module",
+  "author": "Roman Shaposhnikov <roman_dector@mail.ru>",
+  "description": "Vite plugin for Wessberg DI Custom Transformer.",
+  "scripts": {
+    "build": "npm run build:clear && npm run build:cjs && npm run build:esm && npm run build:types && npm run build:copy",
+    "build:clear": "rm -rf dist",
+    "build:cjs": "tsc -p tsconfig.cjs.json && bash createPackage.sh commonjs _cjs && npx tsc-alias -v --dir dist/_cjs -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json && bash createPackage.sh module _esm && npx tsc-alias -v --dir dist/_esm -p tsconfig.esm.json",
+    "build:types": "tsc -p tsconfig.types.json && npx tsc-alias -v --dir dist/_types -p tsconfig.types.json",
+    "build:copy": "cp package.json dist/package.json"
+  },
+  "keywords": [
+    "vite",
+    "DI",
+    "dependency injection",
+    "ioc",
+    "inversion",
+    "service",
+    "container",
+    "newable",
+    "reflection",
+    "singleton",
+    "transient"
+  ],
+  "exports": {
+    ".": {
+      "types": "./_types/index.d.ts",
+      "require": "./_cjs/index.js",
+      "import": "./_esm/index.js",
+      "default": "./_esm/index.js"
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0",
+    "vite": "*"
+  },
+  "dependencies": {
+    "tslib": "^2.8.1",
+    "@rollup/plugin-typescript": "^12.1.1",
+    "@wessberg/di-compiler": "^4.0.1"
+  },
+  "devDependencies": {
+    "tsc-alias": "^1.8.10"
+  }
+}
