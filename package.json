@@ -1,6 +1,6 @@
 {
   "name": "vite-wessberg-di",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "ISC",
   "type": "module",
   "author": "Roman Shaposhnikov <roman_dector@mail.ru>",
@@ -11,7 +11,7 @@
     "build:cjs": "tsc -p tsconfig.cjs.json && bash createPackage.sh commonjs _cjs && npx tsc-alias -v --dir dist/_cjs -p tsconfig.cjs.json",
     "build:esm": "tsc -p tsconfig.esm.json && bash createPackage.sh module _esm && npx tsc-alias -v --dir dist/_esm -p tsconfig.esm.json",
     "build:types": "tsc -p tsconfig.types.json && npx tsc-alias -v --dir dist/_types -p tsconfig.types.json",
-    "build:copy": "cp package.json dist/package.json"
+    "build:copy": "cp package.json dist/package.json && cp README.md dist/README.md"
   },
   "keywords": [
     "vite",
@@ -26,6 +26,11 @@
     "singleton",
     "transient"
   ],
+  "homepage": "https://github.com/roman-dector/vite-wessberg-di#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/roman-dector/vite-wessberg-di"
+  },
   "exports": {
     ".": {
       "types": "./_types/index.d.ts",
